@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Assets/App.css';
 import Axios from "axios";
 
@@ -8,6 +8,8 @@ function Login() {
     const [password,setPassword]=useState('');
 
     const [loginStatus,setLoginStatus]=useState('');
+
+    Axios.defaults.withCredentials=true;
 
     // const getCreds =() => {
     // Axios.get("http://localhost:3001/login")
@@ -52,6 +54,15 @@ function Login() {
         });
     };
 
+    useEffect(()=>{
+        Axios.get('http://localhost:3001/login')
+            .then((response)=>{
+                if(response.data.loggedIn==true)
+                    setLoginStatus(response.data.user[0].password);
+            }
+        );
+    },[]);
+
     return (
         <>
             <div className="login-box">
@@ -75,7 +86,7 @@ function Login() {
                         value={password}
                     />
                     <br/><br/>
-                    <a className='aa' onClick={login}>
+                    <a href='/home' className='aa' onClick={login}>
                         <span></span>
                         <span></span>
                         <span></span>
@@ -85,7 +96,7 @@ function Login() {
                 </div><br/><br/>
                 <span>New user? Click <a href='register'>here</a></span>
             </div>
-            <h1>{loginStatus}</h1>
+            <span style={{color:'#fff'}}>{loginStatus}</span>
         </>
     );
 }
