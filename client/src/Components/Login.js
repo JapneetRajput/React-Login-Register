@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Assets/App.css';
 import Axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
 function Login() {
+
+    const navigate = useNavigate()
 
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
@@ -37,6 +40,14 @@ function Login() {
     // };
 
     const login = () =>{
+        Axios.get('http://localhost:3001/login')
+            .then((response)=>{
+                    if(response.data.loggedIn===true) {
+                        setLoginStatus(response.data.user[0].password);
+                        navigate('/Home', {replace: true});
+                    }
+                }
+        );
         Axios.post('http://localhost:3001/login',{
             username:username,
             password:password
@@ -54,14 +65,8 @@ function Login() {
         });
     };
 
-    useEffect(()=>{
-        Axios.get('http://localhost:3001/login')
-            .then((response)=>{
-                if(response.data.loggedIn==true)
-                    setLoginStatus(response.data.user[0].password);
-            }
-        );
-    },[]);
+    // useEffect(()=>{
+    // },[]);
 
     return (
         <>
@@ -86,7 +91,7 @@ function Login() {
                         value={password}
                     />
                     <br/><br/>
-                    <a href='/home' className='aa' onClick={login}>
+                    <a className='aa' onClick={login}>
                         <span></span>
                         <span></span>
                         <span></span>

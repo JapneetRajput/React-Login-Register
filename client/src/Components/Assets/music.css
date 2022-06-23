@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+section {
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+}
+.cards {
+    display: inline-block;
+    padding: 20px 50px;
+    margin: 20px 30px;
+}
+.cards:hover {
+    box-shadow: 0 10px 10px 10px #000000;
+    transform: scale(1.02);
+}
+.image_box img {
+    width: 200px;
+    height: 200px;
+}
+
+.details #music_name {
+    color: #c9d1d9;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.details #author_name {
+    color: #c9d1d9;
+    font-size: 0.8rem;
+}
+.details button {
+    padding: 5px 10px;
+    border: none;
+    font-weight: bold;
+    background-color: skyblue;
+    outline: none;
+}
+.details button:hover {
+    box-shadow: 2px 2px 2px 2px #000000;
+    padding: 5px 10px;
+    border: none;
+    font-weight: bolder;
+    outline: none;
+    transform: scale(1.03);
+    cursor: pointer;
+}
