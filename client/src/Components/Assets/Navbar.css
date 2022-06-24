@@ -1,0 +1,41 @@
+*{
+    margin:0;
+}
+.navbar .logo{
+    color:#c9d1d9;
+    padding-left: 80px;
+    font-size: 35px;
+}
+.navbar{
+    color: #c9d1d9;
+    background-color: #161b22;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding:10px;
+    place-items: center;
+}
+
+.navlink{
+    display: flex;
+    justify-content: space-evenly;
+    word-spacing: 10px;
+}
+
+.link{
+    text-decoration: none;
+    font-size: large;
+    font-weight: 400;
+    padding: 50px;
+    margin-left: 10px;
+    color: #c9d1d9;
+}
+
+.active{
+    color: white;
+    text-decoration: underline;
+}
+
+/*.navbar .navlink .link{*/
+/*    padding: 100px;*/
+/*}*/
